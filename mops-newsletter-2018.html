@@ -111,13 +111,17 @@
 		}
 
 		.header,
-		.container {
+		.container,
+		.footer {
+			position: relative;
 			width: 100%;
 			max-width: 1200px !important;
+			margin-left: auto;
+			margin-right: auto;
 		}
 
 		.header {
-			margin: 60px auto 0;
+			margin-top: 60px;
 		}
 
 		.header h1,
@@ -127,7 +131,7 @@
 
 		.container {
 			display: grid;
-			margin: 0 auto 60px;
+			margin-bottom: 60px;
 			grid-template-columns: 100%;
 			grid-template-rows: auto auto auto auto auto auto auto;
 		}
@@ -185,37 +189,37 @@
 		.block {
 			margin: 5px;
 			padding: 20px;
-			background-image: url(http://hopeaustin-mops.org/wp-content/uploads/2018/08/19-FYF-gray-smoke-lines.png);
+			background-image: url(http://hopeaustin-mops.org/wp-content/uploads/2017/08/19-FYF-gray-smoke-lines.png);
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
 
-		.block--title {
+		.block__title {
 			text-transform: uppercase;
 			text-align: center;
 		}
 
-		.block--subtitle {
+		.block__subtitle {
 			text-transform: lowercase;
 			font-style: italic;
 			display: flex;
 			flex-flow: row nowrap;
 		}
 
-		.block--subtitle .content {
+		.block__subtitle .content {
 			word-wrap: none;
 			flex: 0 0 auto;
 			padding: 0 10px;
 		}
 
-		.block--subtitle .ornament {
+		.block__subtitle .ornament {
 			position: relative;
 			overflow: hidden;
 			flex: 0 1 50%;
 			opacity: 0.75;
 		}
 
-		.block--subtitle .ornament::after {
+		.block__subtitle .ornament::after {
 			position: absolute;
 			display: block;
 			content: "";
@@ -224,14 +228,41 @@
 			border-top: 1px solid #3B3B3C;
 		}
 
-		.steering--member span {
+		.steering__member span {
 			display: inline-block;
 		}
 
-		.steering--member span:first-child {
+		.steering__member span:first-child {
 			font-weight: bold;
 			margin-right: 5px;
 		}
+
+		.footer__logo {
+			position: absolute;
+			left: 20px;
+			top: 50%;
+			margin-top: -40px;
+		}
+
+		@media (min-width: 1200px) {
+			.footer__logo {
+				left: 250px;
+			}
+		}
+
+		.social-links {
+			padding: 0;
+		}
+
+		.social-links li {
+			display: inline-block;
+			list-style-type: none;
+			padding: 0 3px;
+		}
+
+		/**
+		 * EDITABLE STYLES
+		 */
 
 		/*
 		@tab Page
@@ -353,7 +384,7 @@
 		@section Monthly Theme Heading
 		*/
 
-		#monthly-theme .block--title {
+		#monthly-theme .block__title {
 			/*@editable*/
 			color: #3B3B3C;
 		}
@@ -376,7 +407,7 @@
 		@section Moppets Heading
 		*/
 
-		#moppets .block--title {
+		#moppets .block__title {
 			/*@editable*/
 			color: #3B3B3C;
 		}
@@ -399,7 +430,7 @@
 		@section What's Happening Heading
 		*/
 
-		#happening .block--title {
+		#happening .block__title {
 			/*@editable*/
 			color: #3B3B3C;
 		}
@@ -421,7 +452,7 @@
 		@tab Blocks
 		@section Stork Watch Heading
 		*/
-		#stork .block--title {
+		#stork .block__title {
 			/*@editable*/
 			color: #3B3B3C;
 		}
@@ -443,7 +474,7 @@
 		@tab Blocks
 		@section Moment of Peace Heading
 		*/
-		#moment .block--title {
+		#moment .block__title {
 			/*@editable*/
 			color: #3B3B3C;
 		}
@@ -465,7 +496,7 @@
 		@tab Blocks
 		@section Breakfast Heading
 		*/
-		#breakfast .block--title {
+		#breakfast .block__title {
 			/*@editable*/
 			color: #3B3B3C;
 		}
@@ -487,7 +518,7 @@
 		@tab Blocks
 		@section Steering Committee Heading
 		*/
-		#steering .block--title {
+		#steering .block__title {
 			/*@editable*/
 			color: #3B3B3C;
 		}
@@ -725,8 +756,8 @@
 	<div class="container">
 		<!-- MONTHLY THEME -->
 		<div id="monthly-theme" class="block">
-			<h2 class="block--title" mc:edit="theme-title">Monthly Theme</h2>
-			<p class="block--subtitle">
+			<h2 class="block__title" mc:edit="theme-title">Monthly Theme</h2>
+			<p class="block__subtitle">
 				<span class="ornament"></span>
 				<span class="content" mc:edit="theme-subtitle" mc:hideable>Subtitle</span>
 				<span class="ornament"></span>
@@ -736,8 +767,8 @@
 
 		<!-- MOPPETS -->
 		<div id="moppets" class="block">
-			<h2 class="block--title" mc:edit="moppets-title">Moppets</h2>
-			<p class="block--subtitle">
+			<h2 class="block__title" mc:edit="moppets-title">Moppets</h2>
+			<p class="block__subtitle">
 				<span class="ornament"></span>
 				<span class="content" mc:edit="moppets-subtitle" mc:hideable>our little ones</span>
 				<span class="ornament"></span>
@@ -747,8 +778,8 @@
 
 		<!-- WHAT'S HAPPENING -->
 		<div id="happening" class="block">
-			<h2 class="block--title" mc:edit="happening-title">What's Happening</h2>
-			<p class="block--subtitle">
+			<h2 class="block__title" mc:edit="happening-title">What's Happening</h2>
+			<p class="block__subtitle">
 				<span class="ornament"></span>
 				<span class="content" mc:edit="happening-subtitle" mc:hideable>dates to remember</span>
 				<span class="ornament"></span>
@@ -758,8 +789,8 @@
 
 		<!-- STORK WATCH -->
 		<div id="stork" class="block">
-			<h2 class="block--title" mc:edit="stork-title">Stork Watch</h2>
-			<p class="block--subtitle">
+			<h2 class="block__title" mc:edit="stork-title">Stork Watch</h2>
+			<p class="block__subtitle">
 				<span class="ornament"></span>
 				<span class="content" mc:edit="stork-subtitle" mc:hideable>mommies to be</span>
 				<span class="ornament"></span>
@@ -769,8 +800,8 @@
 
 		<!-- MOMENT OF PEACE -->
 		<div id="moment" class="block">
-			<h2 class="block--title" mc:edit="moment-title">Moment of Peace</h2>
-			<p class="block--subtitle">
+			<h2 class="block__title" mc:edit="moment-title">Moment of Peace</h2>
+			<p class="block__subtitle">
 				<span class="ornament"></span>
 				<span class="content" mc:edit="moment-subtitle" mc:hideable>prayers for your day</span>
 				<span class="ornament"></span>
@@ -780,8 +811,8 @@
 
 		<!-- BREAKFAST -->
 		<div id="breakfast" class="block">
-			<h2 class="block--title" mc:edit="breakfast-title">Breakfast</h2>
-			<p class="block--subtitle">
+			<h2 class="block__title" mc:edit="breakfast-title">Breakfast</h2>
+			<p class="block__subtitle">
 				<span class="ornament"></span>
 				<span class="content" mc:edit="breakfast-subtitle" mc:hideable>Table responsibilities</span>
 				<span class="ornament"></span>
@@ -791,18 +822,56 @@
 
 		<!-- STEERING MOMS -->
 		<div id="steering" class="block">
-			<h2 class="block--title" mc:edit="steering-title">Steering Moms</h2>
-			<p class="block--subtitle">
+			<h2 class="block__title" mc:edit="steering-title">Steering Moms</h2>
+			<p class="block__subtitle">
 				<span class="ornament"></span>
 				<span class="content" mc:edit="steering-subtitle" mc:hideable>We're here to help</span>
 				<span class="ornament"></span>
 			</p>
-			<p class="steering--member" mc:repeatable>
+			<p class="steering__member" mc:repeatable>
 				<span mc:edit="steering-member-name">Name</span>
 				<span mc:edit="steering-member-title">Title</span>
 			</p>
 		</div>
 
+	</div>
+
+	<div class="footer">
+		<img class="footer__logo" height="81" width="100" src="http://hopeaustin-mops.org/wp-content/uploads/2017/08/mops_m.png">
+		<ul class="social-links">
+			<li>
+				<a href="https://www.facebook.com/groups/hopeaustinmops/" target="_blank" title="facebook"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/dark-facebook-48.png" style="display:block;" height="24" width="24" class=""></a>
+			</li>
+			<li>
+				<a href="http://www.twitter.com/hopeaustinmops" target="_blank" title="twitter"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/dark-twitter-48.png" style="display:block;" height="24" width="24" class=""></a>
+			</li>
+			<li>
+				<a href="http://instagram.com/hopeaustinmops" target="_blank" title="instagram"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/dark-instagram-48.png" style="display:block;" height="24" width="24" class=""></a>
+			</li>
+			<li>
+				<a href="http://www.pinterest.com/hopeaustinmops" target="_blank" title="pinterest"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/dark-pinterest-48.png" style="display:block;" height="24" width="24" class=""></a>
+			</li>
+			<li>
+				<a href="*|LIST:URL|*" target="_blank" title="website"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/dark-link-48.png" style="display:block;" height="24" width="24" class=""></a>
+			</li>
+			<li>
+				<a href="mailto:*|LIST:EMAIL|*" target="_blank" title="email"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/dark-forwardtofriend-48.png" style="display:block;" height="24" width="24" class=""></a>
+			</li>
+		</ul>
+
+		<p class="copyright">
+			Copyright &copy; *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.
+		</p>
+		<p>
+			*|LIST:DESCRIPTION|*
+		</p>
+		<p>
+			Want to change how you receive these emails?
+			<br>
+			You can <a href="*|UPDATE_PROFILE|*">update your preferences</a> or <a href="*|UNSUB|*">unsubscribe from this list</a>.
+			<br>
+			*|IF:REWARDS|* *|HTML:REWARDS|* *|END:IF|*
+		</p>
 	</div>
 
 </body>
