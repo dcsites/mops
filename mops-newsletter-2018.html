@@ -47,10 +47,6 @@
 			padding: 0;
 		}
 
-		table {
-			border-collapse: collapse;
-		}
-
 		h1,
 		h2,
 		h3,
@@ -80,11 +76,6 @@
 			-ms-interpolation-mode: bicubic;
 		}
 
-		table {
-			mso-table-lspace: 0pt;
-			mso-table-rspace: 0pt;
-		}
-
 		p,
 		a,
 		li,
@@ -105,7 +96,6 @@
 		li,
 		td,
 		body,
-		table,
 		blockquote {
 			-ms-text-size-adjust: 100%;
 			-webkit-text-size-adjust: 100%;
@@ -120,12 +110,64 @@
 			line-height: inherit !important;
 		}
 
-		.templateContainer {
-			margin: 60px auto;
+		.header,
+		.container {
 			width: 100%;
 			max-width: 1200px !important;
-			border-spacing: 5px;
-			border-collapse: separate;
+		}
+
+		.header {
+			margin: 60px auto 0;
+		}
+
+		.header h1,
+		.header img {
+			margin: 5px;
+		}
+
+		.container {
+			display: grid;
+			margin: 0 auto 60px;
+			grid-template-columns: 100%;
+			grid-template-rows: auto auto auto auto auto auto auto;
+		}
+
+		@media (min-width: 450px) {
+			.container {
+				grid-template-columns: 50% 50%;
+				grid-template-rows: auto auto auto auto auto;
+			}
+
+			#monthly-theme {
+				grid-column: 1 / span 2;
+			}
+
+			#moppets {
+				grid-column: 2 / span 1;
+				grid-row: 2 / span 2;
+			}
+
+			#moment {
+				grid-column: 1 / span 2;
+				grid-row: 5;
+			}
+		}
+
+		@media (min-width: 768px) {
+			.container {
+				grid-template-columns: 35% 35% 30%;
+				grid-template-rows: auto auto auto
+			}
+
+			#moppets {
+				grid-column: 3 / span 1;
+				grid-row: 1 / span 2;
+			}
+
+			#moment {
+				grid-column: 1 / span 1;
+				grid-row: 3 / span 1;
+			}
 		}
 
 		.browser-preview {
@@ -141,6 +183,7 @@
 		}
 
 		.block {
+			margin: 5px;
 			padding: 20px;
 			background-image: url(http://hopeaustin-mops.org/wp-content/uploads/2018/08/19-FYF-gray-smoke-lines.png);
 			background-repeat: no-repeat;
@@ -279,17 +322,9 @@
 		@tip Set the background color and borders for your email's header area.
 		*/
 
-		#templateHeader {
+		.header {
 			/*@editable*/
-			background-color: #FFFFFF;
-			/*@editable*/
-			background-image: none;
-			/*@editable*/
-			background-repeat: no-repeat;
-			/*@editable*/
-			background-position: center;
-			/*@editable*/
-			background-size: cover;
+			background-color: transparent;
 			/*@editable*/
 			border-top: 0;
 			/*@editable*/
@@ -463,7 +498,7 @@
 		@tip Set the background color and borders for your email's footer area.
 		*/
 
-		#templateFooter {
+		.footer {
 			/*@editable*/
 			background-color: #fafafa;
 			/*@editable*/
@@ -490,12 +525,9 @@
 		@tip Set the styling for your email's footer text. Choose a size and color that is easy to read.
 		*/
 
-		#templateFooter .mcnTextContent,
-		#templateFooter .mcnTextContent p {
+		.footer {
 			/*@editable*/
 			color: #656565;
-			/*@editable*/
-			font-family: Helvetica;
 			/*@editable*/
 			font-size: 12px;
 			/*@editable*/
@@ -510,7 +542,7 @@
 		@tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
 		*/
 
-		#templateFooter a {
+		.footer a {
 			/*@editable*/
 			color: #656565;
 			/*@editable*/
@@ -684,105 +716,94 @@
 		<a href="*|ARCHIVE|*" target="_blank">View in your browser</a>
 	</p>
 
-	<table class="templateContainer">
-		<!-- HEADER -->
-		<tr>
-			<td valign="top" id="templateHeader" colspan="3">
-				<img mc:edit="header-image" mc:allowdesigner mc:allowtext>
-				<h1 mc:edit="header-text" mc:hideable>Hope Austin MOPS</h1>
-			</td>
-		</tr>
+	<!-- HEADER -->
+	<div class="header">
+		<h1 mc:edit="header-text" mc:hideable>Hope Austin MOPS</h1>
+		<img mc:edit="header-image" mc:allowdesigner mc:allowtext>
+	</div>
 
-		<!-- ROW 1 -->
-		<tr>
-			<!-- MONTHLY THEME -->
-			<td valign="top" id="monthly-theme" class="block" colspan="2" width="70%">
-				<h2 class="block--title" mc:edit="theme-title">Monthly Theme</h2>
-				<p class="block--subtitle">
-					<span class="ornament"></span>
-					<span class="content" mc:edit="theme-subtitle" mc:hideable>Subtitle</span>
-					<span class="ornament"></span>
-				</p>
-				<div mc:edit="theme-content">Theme content</div>
-			</td>
+	<div class="container">
+		<!-- MONTHLY THEME -->
+		<div id="monthly-theme" class="block">
+			<h2 class="block--title" mc:edit="theme-title">Monthly Theme</h2>
+			<p class="block--subtitle">
+				<span class="ornament"></span>
+				<span class="content" mc:edit="theme-subtitle" mc:hideable>Subtitle</span>
+				<span class="ornament"></span>
+			</p>
+			<div mc:edit="theme-content">Theme content</div>
+		</div>
 
-			<!-- MOPPETS -->
-			<td valign="top" id="moppets" class="block" rowspan="2" width="30%">
-				<h2 class="block--title" mc:edit="moppets-title">Moppets</h2>
-				<p class="block--subtitle">
-					<span class="ornament"></span>
-					<span class="content" mc:edit="moppets-subtitle" mc:hideable>our little ones</span>
-					<span class="ornament"></span>
-				</p>
-				<div mc:edit="moppets-content">Moppets content</div>
-			</td>
-		</tr>
+		<!-- MOPPETS -->
+		<div id="moppets" class="block">
+			<h2 class="block--title" mc:edit="moppets-title">Moppets</h2>
+			<p class="block--subtitle">
+				<span class="ornament"></span>
+				<span class="content" mc:edit="moppets-subtitle" mc:hideable>our little ones</span>
+				<span class="ornament"></span>
+			</p>
+			<div mc:edit="moppets-content">Moppets content</div>
+		</div>
 
-		<!-- ROW 2 -->
-		<tr>
-			<!-- WHAT'S HAPPENING -->
-			<td valign="top" id="happening" class="block" width="35%">
-				<h2 class="block--title" mc:edit="happening-title">What's Happening</h2>
-				<p class="block--subtitle">
-					<span class="ornament"></span>
-					<span class="content" mc:edit="happening-subtitle" mc:hideable>dates to remember</span>
-					<span class="ornament"></span>
-				</p>
-				<div mc:edit="happening-content">List dates of upcoming meetings here.</div>
-			</td>
+		<!-- WHAT'S HAPPENING -->
+		<div id="happening" class="block">
+			<h2 class="block--title" mc:edit="happening-title">What's Happening</h2>
+			<p class="block--subtitle">
+				<span class="ornament"></span>
+				<span class="content" mc:edit="happening-subtitle" mc:hideable>dates to remember</span>
+				<span class="ornament"></span>
+			</p>
+			<div mc:edit="happening-content">List dates of upcoming meetings here.</div>
+		</div>
 
-			<!-- STORK WATCH -->
-			<td valign="top" id="stork" class="block" width="35%">
-				<h2 class="block--title" mc:edit="stork-title">Stork Watch</h2>
-				<p class="block--subtitle">
-					<span class="ornament"></span>
-					<span class="content" mc:edit="stork-subtitle" mc:hideable>mommies to be</span>
-					<span class="ornament"></span>
-				</p>
-				<div mc:edit="stork-content">List new moms-to-be here.</div>
-			</td>
-		</tr>
+		<!-- STORK WATCH -->
+		<div id="stork" class="block">
+			<h2 class="block--title" mc:edit="stork-title">Stork Watch</h2>
+			<p class="block--subtitle">
+				<span class="ornament"></span>
+				<span class="content" mc:edit="stork-subtitle" mc:hideable>mommies to be</span>
+				<span class="ornament"></span>
+			</p>
+			<div mc:edit="stork-content">List new moms-to-be here.</div>
+		</div>
 
-		<!-- ROW 3 -->
-		<tr>
-			<!-- MOMENT OF PEACE -->
-			<td valign="top" id="moment" class="block" width="35%">
-				<h2 class="block--title" mc:edit="moment-title">Moment of Peace</h2>
-				<p class="block--subtitle">
-					<span class="ornament"></span>
-					<span class="content" mc:edit="moment-subtitle" mc:hideable>prayers for your day</span>
-					<span class="ornament"></span>
-				</p>
-				<div mc:edit="moment-content">Include this month's prayer.</div>
-			</td>
+		<!-- MOMENT OF PEACE -->
+		<div id="moment" class="block">
+			<h2 class="block--title" mc:edit="moment-title">Moment of Peace</h2>
+			<p class="block--subtitle">
+				<span class="ornament"></span>
+				<span class="content" mc:edit="moment-subtitle" mc:hideable>prayers for your day</span>
+				<span class="ornament"></span>
+			</p>
+			<div mc:edit="moment-content">Include this month's prayer.</div>
+		</div>
 
-			<!-- BREAKFAST -->
-			<td valign="top" id="breakfast" class="block" width="35%">
-				<h2 class="block--title" mc:edit="breakfast-title">Breakfast</h2>
-				<p class="block--subtitle">
-					<span class="ornament"></span>
-					<span class="content" mc:edit="breakfast-subtitle" mc:hideable>Table responsibilities</span>
-					<span class="ornament"></span>
-				</p>
-				<div mc:edit="breakfast-content">List breakfast responsibilities here.</div>
-			</td>
+		<!-- BREAKFAST -->
+		<div id="breakfast" class="block">
+			<h2 class="block--title" mc:edit="breakfast-title">Breakfast</h2>
+			<p class="block--subtitle">
+				<span class="ornament"></span>
+				<span class="content" mc:edit="breakfast-subtitle" mc:hideable>Table responsibilities</span>
+				<span class="ornament"></span>
+			</p>
+			<div mc:edit="breakfast-content">List breakfast responsibilities here.</div>
+		</div>
 
-			<!-- STEERING MOMS -->
-			<td valign="top" id="steering" class="block" width="35%">
-				<h2 class="block--title" mc:edit="steering-title">Steering Moms</h2>
-				<p class="block--subtitle">
-					<span class="ornament"></span>
-					<span class="content" mc:edit="steering-subtitle" mc:hideable>We're here to help</span>
-					<span class="ornament"></span>
-				</p>
-				<p class="steering--member" mc:repeatable>
-					<span mc:edit="steering-member-name">Name</span>
-					<span mc:edit="steering-member-title">Title</span>
-				</p>
-			</td>
-		</tr>
+		<!-- STEERING MOMS -->
+		<div id="steering" class="block">
+			<h2 class="block--title" mc:edit="steering-title">Steering Moms</h2>
+			<p class="block--subtitle">
+				<span class="ornament"></span>
+				<span class="content" mc:edit="steering-subtitle" mc:hideable>We're here to help</span>
+				<span class="ornament"></span>
+			</p>
+			<p class="steering--member" mc:repeatable>
+				<span mc:edit="steering-member-name">Name</span>
+				<span mc:edit="steering-member-title">Title</span>
+			</p>
+		</div>
 
-	</table>
+	</div>
 
 </body>
 
