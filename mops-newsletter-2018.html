@@ -127,6 +127,9 @@
 		.header h1,
 		.header img {
 			margin: 5px;
+			width: 100%;
+			max-width: 100%;
+			height: auto;
 		}
 
 		.container {
@@ -237,11 +240,13 @@
 			margin-right: 5px;
 		}
 
-		.footer__logo {
-			position: absolute;
-			left: 20px;
-			top: 50%;
-			margin-top: -40px;
+		@media (min-width: 650px) {
+			.footer__logo {
+				position: absolute;
+				left: 20px;
+				top: 50%;
+				margin-top: -40px;
+			}
 		}
 
 		@media (min-width: 1200px) {
